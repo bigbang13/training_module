@@ -140,6 +140,10 @@ def read_package(workout_type: str, data: list) -> Training:
     from typing import Dict
     sports: Dict[str, type[Training]] = {'RUN': Running, 'WLK': SportsWalking,
                                          'SWM': Swimming}
+    try:
+        sports[workout_type] in sports
+    except (KeyError):
+        print('Неизвестный тип тренировки')
     training = (sports[workout_type])(*data)
     return training
 
