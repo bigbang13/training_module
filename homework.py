@@ -142,7 +142,7 @@ def read_package(workout_type: str, data: list[int]) -> Training:
                                          'SWM': Swimming}
     if sports.get(workout_type) is None:
         raise KeyError('Неизвестный тип тренировки')
-    training = (sports[workout_type])(*data)
+    training: Training = (sports[workout_type])(*data)
     return training
 
 
