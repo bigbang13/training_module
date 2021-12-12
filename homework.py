@@ -138,7 +138,7 @@ def read_package(workout_type: str, data: list[int]) -> Training:
     """Прочитать данные полученные от датчиков."""
 
     from typing import Dict
-    sports: Dict[str, Training] = {'RUN': Running, 'WLK': SportsWalking,
+    sports: Dict[str, type[Training]] = {'RUN': Running, 'WLK': SportsWalking,
                                          'SWM': Swimming}
     if sports.get(workout_type) is None:
         raise KeyError('Неизвестный тип тренировки')
