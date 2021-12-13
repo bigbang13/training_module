@@ -1,4 +1,5 @@
 from dataclasses import dataclass, asdict
+from typing import List, Union
 
 
 @dataclass
@@ -134,15 +135,14 @@ class Swimming(Training):
         return spent_calories_kcal
 
 
-from typing import List, Union
-def read_package(workout_type: str, data: list[Union[int, float]]) -> Training:
+def read_package(workout_type: str, data: List[Union[int, float]]) -> Training:
     """Прочитать данные полученные от датчиков."""
 
     from typing import Dict
     sports: Dict[str, type[Training]] = {'RUN': Running, 'WLK': SportsWalking,
                                          'SWM': Swimming}
     if workout_type not in sports:
-        raise Exception('ValueError')
+        raise ValueError('Неизвестный тип тренировки')
     return (sports[workout_type])(*data)
 
 
