@@ -134,7 +134,7 @@ class Swimming(Training):
         return spent_calories_kcal
 
 
-def read_package(workout_type: str, data: list[int]) -> Training:
+def read_package(workout_type: str, data: list[float]) -> Training:
     """Прочитать данные полученные от датчиков."""
 
     from typing import Dict
