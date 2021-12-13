@@ -140,8 +140,8 @@ def read_package(workout_type: str, data: list[int]) -> Training:
     from typing import Dict
     sports: Dict[str, type[Training]] = {'RUN': Running, 'WLK': SportsWalking,
                                          'SWM': Swimming}
-    if sports.get(workout_type) is None:
-        raise KeyError('Неизвестный тип тренировки')
+    if workout_type not in sports:
+        raise ValueError('Неизвестный тип тренировки')
     training: Training = (sports[workout_type])(*data)
     return training
 
@@ -155,7 +155,7 @@ def main(training: Training) -> None:
 if __name__ == '__main__':
     packages = [
         ('SWM', [720, 1, 80, 25, 40]),
-        ('RUN', [15000, 1, 75]),
+        ('RN', [15000, 1, 75]),
         ('WLK', [9000, 1, 75, 180]),
     ]
 
