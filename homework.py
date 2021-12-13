@@ -142,8 +142,7 @@ def read_package(workout_type: str, data: list[int]) -> Training:
                                          'SWM': Swimming}
     if workout_type not in sports:
         raise Exception('ValueError')
-    training: Training = (sports[workout_type])(*data)
-    return training
+    return (sports[workout_type])(*data)
 
 
 def main(training: Training) -> None:
